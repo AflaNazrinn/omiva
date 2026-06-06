@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OMIVA JP50 - 3D Box Viewer</title>
+    <meta name="description" content="OMIVA JP50 3D Box Mockup Viewer. Scroll or drag to rotate and inspect all sides.">
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main Style Sheet -->
+    <link rel="stylesheet" href="style.css?v=2.2">
+</head>
+<body>
+    <!-- Background Particles -->
+    <canvas id="particles"></canvas>
+
+    <!-- Header Overlay -->
+    <header class="hud-header">
+        <div class="logo">
+            <span class="logo-text">OMIVA<span class="logo-accent">.</span></span>
+        </div>
+        <div class="hud-status">
+            <span class="status-indicator"></span> 3D Mode Active
+        </div>
+    </header>
+
+    <!-- 3D Canvas Container -->
+    <div class="viewport-container full-screen">
+        <canvas id="canvas-3d"></canvas>
+    </div>
+
+    <!-- Interactive Controls Card -->
+    <div class="controls-panel">
+        <div class="controls-header">
+            <span class="controls-title">Box Controls</span>
+        </div>
+        
+        <div class="control-row">
+            <div class="control-label">
+                <span>View Mode</span>
+            </div>
+            <div class="btn-group">
+                <button id="btn-scroll" class="control-btn"><i class="fa-solid fa-scroll"></i> Scroll-Sync</button>
+                <button id="btn-free" class="control-btn active"><i class="fa-solid fa-arrows-spin"></i> Free Rotate</button>
+            </div>
+        </div>
+
+        <div class="control-row">
+            <div class="control-label">
+                <span>Explode Box</span>
+                <span class="control-value" id="explode-val">0%</span>
+            </div>
+            <input type="range" id="explode-slider" min="0" max="100" value="0" class="custom-slider">
+        </div>
+
+        <div class="control-row">
+            <div class="control-label">
+                <span>Auto Spin</span>
+            </div>
+            <div class="btn-group">
+                <button id="btn-spin-on" class="control-btn"><i class="fa-solid fa-play"></i> On</button>
+                <button id="btn-spin-off" class="control-btn active"><i class="fa-solid fa-pause"></i> Off</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Instruction HUD -->
+    <div class="instruction-hud">
+        <div class="hud-instruction-item"><i class="fa-solid fa-mouse"></i> Drag to rotate</div>
+        <div class="hud-instruction-item"><i class="fa-solid fa-scroll"></i> Scroll to spin</div>
+        <div class="hud-instruction-item"><i class="fa-solid fa-magnifying-glass-plus"></i> Pinch/wheel to zoom</div>
+    </div>
+
+    <!-- Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <!-- App Logic -->
+    <script src="app.js?v=2.2"></script>
+</body>
+</html>
