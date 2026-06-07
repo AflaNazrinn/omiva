@@ -35,6 +35,11 @@ const faceConfig = {
     bottom: { width: WIDTH,  height: DEPTH,  pos: [0, -HEIGHT/2, 0],  rot: [Math.PI/2, 0, 0],     normal: [0, -1, 0] }
 };
 
+// Calculate camera Z based on screen width for mobile responsiveness
+function getTargetZ() {
+    return window.innerWidth < 768 ? 4.8 : 3.2;
+}
+
 // Initialize Three.js Scene
 function init() {
     const container = document.querySelector('.viewport-container');
@@ -45,7 +50,7 @@ function init() {
     scene = new THREE.Scene();
 
     camera = new THREE.PerspectiveCamera(40, width / height, 0.1, 100);
-    camera.position.set(0, 0, 3.2);
+    camera.position.set(0, 0, getTargetZ());
 
     // 2. Renderer
     renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('canvas-3d'), antialias: true, alpha: true });
@@ -121,12 +126,12 @@ function buildBox() {
     const textureLoader = new THREE.TextureLoader();
     
     const textures = {
-        front: textureLoader.load('images/Front Panel.png'),
-        back: textureLoader.load('images/Back Pnel.png'),
-        right: textureLoader.load('images/Right side.png'),
-        left: textureLoader.load('images/Left side .png'),
-        top: textureLoader.load('images/TOP.png'),
-        bottom: textureLoader.load('images/BOTTOM.png')
+        front: textureLoader.load('images/f.png?' + Date.now()),
+        back: textureLoader.load('images/b.png?' + Date.now()),
+        right: textureLoader.load('images/r.png?' + Date.now()),
+        left: textureLoader.load('images/Left side .png?' + Date.now()),
+        top: textureLoader.load('images/TOP.png?' + Date.now()),
+        bottom: textureLoader.load('images/BOTTOM.png?' + Date.now())
     };
 
     // Set texture wrapping and filters for high quality
@@ -300,7 +305,7 @@ function animate() {
         // Smoothly return camera and controls target to home position
         camera.position.x = lerp(camera.position.x, 0, 0.08);
         camera.position.y = lerp(camera.position.y, 0, 0.08);
-        camera.position.z = lerp(camera.position.z, 3.2, 0.08);
+        camera.position.z = lerp(camera.position.z, getTargetZ(), 0.08);
         controls.target.x = lerp(controls.target.x, 0, 0.08);
         controls.target.y = lerp(controls.target.y, 0, 0.08);
         controls.target.z = lerp(controls.target.z, 0, 0.08);

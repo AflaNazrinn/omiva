@@ -273,11 +273,49 @@ body {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+    .hud-header {
+        padding: 16px 20px;
+    }
+    
+    .logo-text {
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+    }
+    
+    .hud-status {
+        font-size: 0.75rem;
+        padding: 4px 10px;
+    }
+
     .controls-panel {
-        bottom: 20px;
-        left: 20px;
-        right: 20px;
+        bottom: 15px;
+        left: 15px;
+        right: 15px;
         width: auto;
+        padding: 16px;
+        border-radius: 16px;
+    }
+    
+    .controls-header {
+        margin-bottom: 12px;
+    }
+    
+    .controls-title {
+        font-size: 0.95rem;
+    }
+    
+    .control-row {
+        margin-bottom: 12px;
+    }
+    
+    .control-btn {
+        padding: 8px;
+        font-size: 0.75rem;
+        border-radius: 8px;
+    }
+    
+    .custom-slider {
+        height: 5px;
     }
     
     .instruction-hud {
